@@ -1,0 +1,13 @@
+#verifica si el puerto 834 esta Listening
+netstat -anp | grep 834
+
+#opciones de firewall
+systemctl status firewalld.service
+systemctl stop firewalld.service
+systemctl disable firewalld.service
+
+#forward
+sysctl -w net.ipv4.ip_forward=1
+mejor editar el archivo /etc/sysctl.conf y adicionar net.ipv4.ip_forward = 1
+sysctl -p /etc/sysctl.conf
+/etc/init.d/procps.sh restart
